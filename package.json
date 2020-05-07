@@ -1,6 +1,6 @@
 {
   "name": "docgen",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage your documentation project with Node and AsciidoctorJs.",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,10 @@
     "documentation"
   ],
   "author": "Crypto Neat",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "prompts": "^2.3.2",
+    "yargs": "^15.3.1"
+  }
 }
