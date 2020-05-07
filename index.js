@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const prompts = require('prompts');
 const chalk = require('chalk');
 
@@ -8,8 +10,6 @@ const gentools = require('./src/gentools');
 const processEnvLang = process.env.LANG.substr(0,2);
 const lang = (processEnvLang === 'fr') ? 'fr' : 'en';
 const ganl = (processEnvLang !== 'fr') ? 'fr' : 'en';
-
-prompts.override(require('yargs').argv);
 
 const questions = [
   {
@@ -94,6 +94,8 @@ console.log('\x1Bc');
 
 // Welcoming announcement
 console.log(chalk.grey(i18n[lang].welcome + chalk.white(' Asciidocjs') + '. (version : ' + pack.version + ')'));
+
+prompts.override(require('yargs').argv);
 
 (async () => {
   const onCancel = (prompt) => {
