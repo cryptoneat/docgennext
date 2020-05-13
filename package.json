@@ -1,7 +1,7 @@
 {
-  "name": "docgen",
-  "version": "0.0.3",
-  "description": "Manage your documentation project with Node and AsciidoctorJs.",
+  "name": "docgennext",
+  "version": "0.0.4",
+  "description": "Manage your documentation project with Node and Asciidoctor.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,11 +14,12 @@
   "author": "Crypto Neat",
   "license": "ISC",
   "bin": {
-    "docgen": "./index.js"
+    "docgen": "index.js"
   },
   "dependencies": {
     "chalk": "^4.0.0",
     "prompts": "^2.3.2",
+    "simple-git": "^2.4.0",
     "yargs": "^15.3.1"
   }
 }

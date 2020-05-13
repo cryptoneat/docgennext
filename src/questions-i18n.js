@@ -1,31 +1,37 @@
 const i18n = {
   fr: {
     welcome: 'Bienvenue dans le générateur de documentation',
-    titles: 'Titre de votre documentation : (requis)',
+    title: 'Titre de votre documentation : (requis)',
     lang: 'Quelle sera la langue utilisée ?',
     subtitle: 'Avez-vous un sous-titre (document PDF uniquement) ?',
-    author: 'Quel est l\'auteur de cette documentation ? (requis)',
-    mail: 'Une courrier électronique pour un contact ?',
-    description: 'Quelques mots pour présenter votre documentation (requis)',
-    version: 'Qu\'elle est la version de votre documentation ?',
+    author: 'Qui est l\'auteur (ou les auteurs) ? (requis)',
+    email: 'Un courrier électronique ?',
+    description: 'Quelques mots pour décrire votre sujet (requis)',
+    version: 'Version actuelle de votre documentation ?',
     port: 'Sur quel port vous souhaitez développer avec votre serveur local ?',
     kroki: 'Adresse du serveur Kroki :',
     autolaunch: 'Lancement automatique ?',
-    bye: 'Au revoir !'
+    copy: 'Fichier package.json créé à la racine du projet.',
+    bye: 'Au revoir !',
+    finished: 'Le projet documentaire est prêt. Merci !',
+    varfilecomment: 'Ajoutez vos variables de votre projet ci-dessous :'
   },
   en: {
     welcome: 'Welcome to the documentation generator',
-    titles: 'Name of your awesome doc? (required)',
+    title: 'Name of your doc? (required)',
     lang: 'Language of your documentation?',
     subtitle: 'Do you have a subtitle? (PDF only)',
-    author: 'How is author? (required)',
-    mail: 'Do you have a contact mail?',
-    description: 'Your documentation with few words? (required)',
-    version: 'What is the current version?',
+    author: 'Who is the author (or authors)? (required)',
+    email: 'Do you have a contact email?',
+    description: 'Few words to describe your subject? (required)',
+    version: 'Current version of your documentation?',
     port: 'Which port do you want for your localhost?',
     kroki: 'Kroki server:',
     autolaunch: 'Play the magic?',
-    bye: 'Goodbye!'
+    copy: 'Package.json file created to the root.',
+    bye: 'Goodbye!',
+    finished: 'Ready to be written. Thank you!',
+    varfilecomment: 'Add your vars below:'
   }
 };
 

@@ -47,13 +47,7 @@ function filterCapitalizeFirst(str) {
  * @returns {boolean} checked email.
  */
 function filterEmail(email) {
-  let filter = false;
-
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.trim())) {
-    filter = true;
-  }
-
-  return filter;
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.trim());
 }
 
 /**
@@ -93,7 +87,7 @@ function filterPort(port) {
  * @returns {string}
  */
 function filterVersion(version) {
-  let filter = '0.1.0';
+  let filter = '';
 
   if(typeof version === 'string') {
     // Commas and semicolons are replaced by periods.
