@@ -1,5 +1,5 @@
-const confadoc =
-`ifeval::["{lang}" == "fr"]
+const confadoc = `// French translation
+ifeval::["{lang}" == "fr"]
 include::https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/data/locale/attributes-fr.adoc[]
 endif::[]
 
@@ -8,6 +8,8 @@ endif::[]
 :hide-uri-scheme:
 :numbered:
 :toc: left
+:toclevels: 3
+:sectnumlevels: 2
 
 // IDs management
 :idprefix:
@@ -15,10 +17,15 @@ endif::[]
 
 // DocInfo
 :docinfo: shared
-:docinfodir: ./project/docinfo/
+:docinfodir: ./docinfo/
+
+ifeval::["{backend}" == "html5"]
+:highlightjs-theme: github
+:nofooter:
+:source-highlighter: highlightjs
+endif::[]
 
 include::./variables.adoc[]
-
 `
 
 module.exports = confadoc;

@@ -12,7 +12,6 @@ end_of_line = lf
 [{*.md, *.adoc}]
 max_line_length = off
 trim_trailing_whitespace = false
-
 `
 
 module.exports = editorconfig;

@@ -24,6 +24,8 @@ const chalk = require('chalk');
 const pack = require('./package.json');
 const i18n = require('./src/questions-i18n');
 const gentools = require('./src/gentools');
+const index = require('./src/exports/index');
+const readme = require('./src/exports/readme');
 const confadoc = require('./src/exports/confadoc');
 const editorconfig = require('./src/exports/editorconfig');
 
@@ -117,7 +119,7 @@ console.log('\x1Bc');
 
 // Welcoming announcement
 console.log(
-  chalk.grey(i18n[processEnvLang].welcome + chalk.white(' Asciidoc.js') + '. (version : ' + pack.version + ')')
+  chalk.grey(i18n[processEnvLang].welcome + chalk.white(' Asciidoc.js') + ' (version : ' + pack.version + ').')
 );
 
 // If the questions are canceled, quit all process become after this.
@@ -158,8 +160,10 @@ function building(answers) {
     newPackageJson.version = answers.versionDoc;
     newPackageJson.description = answers.description;
     newPackageJson.main = 'index.js';
-    newPackageJson.scripts.pdf = 'asciidoctor-pdf -T ./templates ./project/main.adoc';
+    newPackageJson.scripts.start = 'node index.js';
+    newPackageJson.scripts.pdf = 'asciidoctor-pdf -T ./project/templates ./main.adoc';
     newPackageJson.config = {
+      confirm: answers.autolaunch,
       port: answers.port,
       creation: new Date(),
       attributes: {
@@ -205,7 +209,7 @@ function building(answers) {
 
               res.on('end', () => {
                 writeFile('.gitignore', gitignore, 'utf8').then(() => {
-                  appendFile('.gitignore', '\n# Doc project\n./build/\n').then(() => {
+                  appendFile('.gitignore', '\n# Doc project\nbuild/\n').then(() => {
                     simpleGit.init().then(() => {
                       simpleGit.add('.').then(() => {
                         simpleGit.commit('Initial commit.').then(() => {
@@ -224,17 +228,17 @@ function building(answers) {
 
     mkdir('./project/chapters', { recursive: true }, () => {
       writeFile('./project/chapters/.gitkeep', '');
-      writeFile('./project/variables.adoc', `${i18n[processEnvLang].varfilecomment}\n`);
+      writeFile('./project/variables.adoc', `// ${i18n[processEnvLang].varfilecomment}\n`);
       writeFile('./project/confadoc.adoc', confadoc);
-      writeFile('./project/main.adoc', '\n');
-    }).catch(e => { throw e });
-
-    mkdir('./project/images', { recursive: true }, () => {
-      writeFile('./project/images/.gitkeep', '');
+      writeFile('./project/main.adoc', 'include::./confadoc.adoc[]\n');
     }).catch(e => { throw e });
 
     mkdir('./project/icons', { recursive: true }, () => {
       writeFile('./project/icons/.gitkeep', '');
+    }).catch(e => { throw e });
+
+    mkdir('./project/images', { recursive: true }, () => {
+      writeFile('./project/images/.gitkeep', '');
     }).catch(e => { throw e });
 
     mkdir('./project/styles', { recursive: true }, () => {
@@ -250,6 +254,10 @@ function building(answers) {
     }).catch(e => { throw e });
 
     writeFile('.editorconfig', editorconfig).catch(e => { throw e });
+
+    writeFile('README.md', readme(answers.title.title, answers.description)).catch(e => { throw e });
+
+    writeFile('index.js', index).catch(e => { throw e });
   });
 
   return newPackageJson;

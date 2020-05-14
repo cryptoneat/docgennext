@@ -120,8 +120,9 @@ Le projet se décompose ainsi :
 
 Vous pouvez facilement ajouter des fichiers, sans modification de la configuration :
 
-- `project/images/` : pour toutes vos images *raw* (png, jpg, gif).
+- `project/docinfo/` : pour les fichiers `docinfo.html` et `docinfo-footer.html`.
 - `project/icons/` : emplacement de vos icones.
+- `project/images/` : pour toutes vos images *raw* (png, jpg, gif).
 - `project/styles/` : mettez ici tous vos fichiers CSS.
 - `project/templates/` pour y sauvegarder vos fichiers *templates* (le langage de *template* par défaut est [Nunjucks](https://mozilla.github.io/nunjucks/) mais rien ne vous empêche d'en installer d'autres).
 
@@ -130,9 +131,9 @@ Deux fichiers importants :
 - `project/confadoc.adoc` : pour configurer votre projet avec les variables Asciidoctor.
 - `project/variables.adoc` : renseignez les variables de votre documentations (références externes par exemple).
 
-### Docinfo
+### Font Awesome
 
-TODO : présentez ici les fichiers docinfo.
+Si vous souhaitez utiliser des icônes, reportez-vous à la documentation de Asciidoctor. Les Font Awesome 5 arriveront plus tard, dans tous les cas, aujourd'hui DocGen Next ne porte pas ce sujet.
 
 ### IDE
 
