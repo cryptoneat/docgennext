@@ -13,6 +13,7 @@ const mkdir = util.promisify(require('fs').mkdir);
 const exec = util.promisify(require('child_process').exec);
 const spawn = require('child_process').spawn;
 const https = require('https');
+const path = require('path');
 
 // Requires third party
 const simpleGit = require('simple-git/promise')();
@@ -29,7 +30,7 @@ const readme = require('./src/exports/readme');
 const confadoc = require('./src/exports/confadoc');
 const editorconfig = require('./src/exports/editorconfig');
 
-const processEnvLang = (process.env.LANG.substr(0,2) === 'fr')  ? 'fr' : 'en';
+const processEnvLang = (process.env.LANG !== undefined && process.env.LANG.substr(0,2) === 'fr')  ? 'fr' : 'en';
 const packageJsonFile = 'package.json';
 
 const questions = [
@@ -54,12 +55,6 @@ const questions = [
     ],
     initial: 0,
     validate: value => Number.isFinite(value)
-  },
-  {
-    type: 'text',
-    name: 'subtitle',
-    message: i18n[processEnvLang].subtitle,
-    format: value => value.trim()
   },
   {
     type: 'text',
@@ -151,7 +146,7 @@ async function init(answers) {
 function building(answers) {
   let newPackageJson = '';
 
-  readFile(packageJsonFile, { encoding: 'utf8' }, (error, data) => {
+  readFile(path.resolve(packageJsonFile), { encoding: 'utf8' }, (error, data) => {
     if (error) throw error;
 
     newPackageJson = JSON.parse(data);
@@ -170,7 +165,6 @@ function building(answers) {
         'lang': answers.lang,
         'encoding': 'utf-8',
         'doctitle': answers.title.title,
-        'subtitle': answers.subtitle,
         'author': answers.author.split(',')[0], // Keep the first and main author.
         // If more then one, we keep everyone or no one.
         'authors': (answers.author.split(',').length > 1) ? answers.author : '',
@@ -183,10 +177,16 @@ function building(answers) {
       }
     };
 
-    writeFile(packageJsonFile, JSON.stringify(newPackageJson, null, 2), error => {
+    writeFile(path.resolve(packageJsonFile), JSON.stringify(newPackageJson, null, 2), error => {
       if (error) throw error;
     }).then(() => {
-      const install = spawn('npm', ['i', '--save',
+      let cmd = 'npm'
+
+      if (process.platform === 'win32') {
+        cmd = 'npm.cmd'
+      }
+
+      const install = spawn(cmd, ['i', '--save',
         '@asciidoctor/core',
         'asciidoctor',
         'asciidoctor-pdf',
@@ -209,7 +209,7 @@ function building(answers) {
 
               res.on('end', () => {
                 writeFile('.gitignore', gitignore, 'utf8').then(() => {
-                  appendFile('.gitignore', '\n# Doc project\nbuild/\n').then(() => {
+                  appendFile('.gitignore', '\n# Doc project\nbuild/\nproject/*.pdf\nproject/*.html\n').then(() => {
                     simpleGit.init().then(() => {
                       simpleGit.add('.').then(() => {
                         simpleGit.commit('Initial commit.').then(() => {
@@ -226,31 +226,31 @@ function building(answers) {
       });
     });
 
-    mkdir('./project/chapters', { recursive: true }, () => {
-      writeFile('./project/chapters/.gitkeep', '');
-      writeFile('./project/variables.adoc', `// ${i18n[processEnvLang].varfilecomment}\n`);
-      writeFile('./project/confadoc.adoc', confadoc);
-      writeFile('./project/main.adoc', 'include::./confadoc.adoc[]\n');
+    mkdir(path.resolve('./project' + '/chapters'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/chapters' + '/.gitkeep') , '');
+      writeFile(path.resolve('./project' + '/' + 'variables.adoc'), `// ${i18n[processEnvLang].varfilecomment}\n`);
+      writeFile(path.resolve('./project' + '/' + 'confadoc.adoc'), confadoc);
+      writeFile(path.resolve('./project' + '/' + 'main.adoc'), 'include::./confadoc.adoc[]\n');
     }).catch(e => { throw e });
 
-    mkdir('./project/icons', { recursive: true }, () => {
-      writeFile('./project/icons/.gitkeep', '');
+    mkdir(path.resolve('./project' + '/docinfo'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/docinfo' + '/.gitkeep'), '');
     }).catch(e => { throw e });
 
-    mkdir('./project/images', { recursive: true }, () => {
-      writeFile('./project/images/.gitkeep', '');
+    mkdir(path.resolve('./project' + '/icons'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/icons' + '/.gitkeep'), '');
     }).catch(e => { throw e });
 
-    mkdir('./project/styles', { recursive: true }, () => {
-      writeFile('./project/styles/.gitkeep', '');
+    mkdir(path.resolve('./project' + '/images'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/images' + '/.gitkeep'), '');
     }).catch(e => { throw e });
 
-    mkdir('./project/docinfo', { recursive: true }, () => {
-      writeFile('./project/docinfo/.gitkeep', '');
+    mkdir(path.resolve('./project' + '/styles'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/styles' + '/.gitkeep'), '');
     }).catch(e => { throw e });
 
-    mkdir('./project/templates', { recursive: true }, () => {
-      writeFile('./project/templates/.gitkeep', '');
+    mkdir(path.resolve('./project' + '/templates'), { recursive: true }, () => {
+      writeFile(path.resolve('./project' + '/templates' + '/.gitkeep'), '');
     }).catch(e => { throw e });
 
     writeFile('.editorconfig', editorconfig).catch(e => { throw e });

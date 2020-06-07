@@ -2,7 +2,9 @@
 
 # DocGen Next
 
-DocGen Next permet de créer des documentations au format HTML et PDF, il repose principalement sur [Asciidoctor.js](https://asciidoctor.org/docs/asciidoctor.js/).
+DocGen vous proposes un cadre d'écriture documentaire, tous vos projets seront organisés de la même façon, les outils nécessaires à l'écriture et dessins de diagramme sont installés et configurés. Vous n'avez plus qu'à vous lancer dans l'écriture sans vous souciez du reste.
+
+Cet outil vous permet de créer des documentations au format HTML et PDF, il repose principalement sur [Asciidoctor.js](https://asciidoctor.org/docs/asciidoctor.js/).
 
 ## Pré-requis
 
@@ -134,6 +136,16 @@ Deux fichiers importants :
 ### Font Awesome
 
 Si vous souhaitez utiliser des icônes, reportez-vous à la documentation de Asciidoctor. Les Font Awesome 5 arriveront plus tard, dans tous les cas, aujourd'hui DocGen Next ne porte pas ce sujet.
+
+Concernant le PDF, les Font Awesome 5 sont déjà présentes.
+
+### Styles
+
+Afin de personnaliser vos documents, il est nécessaire de créer un ou plusieurs fichiers dans le dossier `styles`.
+
+Dans le fichier `project/confadoc.adoc`, ajoutez la ligne suivante : `:stylesheet: ./styles/styles.css`.
+
+Lors de l'affichage dans le navigateur web, si vous avez des erreurs concernant le *Cross origin*, désactivez-les.
 
 ### IDE
 
