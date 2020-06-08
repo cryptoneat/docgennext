@@ -33,6 +33,10 @@ const editorconfig = require('./src/exports/editorconfig')
 const processEnvLang = (process.env.LANG !== undefined && process.env.LANG.substr(0, 2) === 'fr') ? 'fr' : 'en'
 const packageJsonFile = 'package.json'
 
+// If the questions are canceled, quit all process become after this.
+let next = true
+let autolaunch = true
+
 const questions = [
   {
     type: 'text',
@@ -117,9 +121,6 @@ console.log(
   chalk.grey(i18n[processEnvLang].welcome + chalk.white(' Asciidoc.js') + ' (version : ' + pack.version + ').')
 )
 
-// If the questions are canceled, quit all process become after this.
-let next = true
-
 prompts.override(yargs)
 
 function start () {
@@ -145,16 +146,20 @@ function building (answers) {
   readFile(path.resolve(packageJsonFile), { encoding: 'utf8' }, (error, data) => {
     if (error) throw error
 
+    autolaunch = answers.autolaunch
+
     newPackageJson = JSON.parse(data)
 
     newPackageJson.name = answers.title.name
     newPackageJson.version = answers.versionDoc
     newPackageJson.description = answers.description
     newPackageJson.main = 'index.js'
-    newPackageJson.scripts.start = 'node index.js'
+    newPackageJson.scripts.start = 'node index.js && npm run concurrently'
+    newPackageJson.scripts.concurrently = 'concurrently -n "reload,script" -p "[{name}]" -c "green,blue" "npm run reload" "npm run nodemon"'
+    newPackageJson.scripts.reload = 'reload -b -p $npm_package_config_port -d build'
+    newPackageJson.scripts.nodemon = 'nodemon --exec "node index.js" --watch project --ext adoc,md,html,css,ico,png,jpg,gif'
     newPackageJson.scripts.pdf = 'asciidoctor-pdf -T ./project/templates ./main.adoc'
     newPackageJson.config = {
-      confirm: answers.autolaunch,
       port: answers.port,
       creation: new Date(),
       attributes: {
@@ -185,16 +190,19 @@ function building (answers) {
       const install = spawn(cmd, ['i', '--save',
         '@asciidoctor/core',
         'asciidoctor',
-        'asciidoctor-pdf',
         'asciidoctor-kroki',
+        'asciidoctor-pdf',
         'chalk',
+        'concurrently',
         'moment',
+        'nodemon',
         'nunjucks',
+        'reload',
         'yargs'
       ], { stdio: 'inherit' })
 
       install.on('close', () => {
-        https.get('https://www.gitignore.io/api/osx,vim,node,linux,emacs,nanoc,windows,intellij+all,visualstudiocode',
+        https.get('https://www.toptal.com/developers/gitignore/api/osx,vim,node,linux,emacs,nanoc,windows,intellij+all,visualstudiocode',
           (res) => {
             if (res.statusCode === 200) {
               let gitignore = ''
@@ -211,12 +219,18 @@ function building (answers) {
                         simpleGit.commit('Initial commit.').then(() => {
                           // Ending announcement
                           console.log(chalk.green('\n' + i18n[processEnvLang].finished + '\n'))
+
+                          if (autolaunch) {
+                            spawn(cmd, ['start'], { stdio: 'inherit' })
+                          }
                         })
                       })
                     })
                   })
                 }).catch(e => { throw e })
               })
+            } else {
+              console.log(chalk.red('[ERROR]', res.statusCode))
             }
           })
       })

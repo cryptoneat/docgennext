@@ -154,6 +154,38 @@ N'importe quel éditeur de texte fera l'affaire, les deux éditeurs les plus ada
 - [Visual Studio Code](https://code.visualstudio.com)
 - Ou son *fork* qui ne récupère pas les données statistiques [VSCodium](https://github.com/VSCodium/vscodium#install-with-brew)
 
+## Livrables
+
+Vous trouverez ici les différentes instructions pour générer les formats proposés par Asciidoctor.
+
+### HTML
+
+Pour compiler la documentation et générer le fichier HTML :
+
+```bash
+node index.js
+```
+
+Un dossier `build` est créé à la racine du projet s'il n'existe pas et le fichier `index.html` est compilé.
+
+Avec la commande suivante :
+
+```bash
+npm start
+```
+
+Le navigateur par défaut du système d'exploitation est ouvert et la page affichée.
+
+Toute modification ou fichier copié dans le dossier `project` génère une recompilation de la documentation et la page dans le navigateur est mise à jour.
+
+### PDF
+
+Si vous souhaitez modifier la mise en page de vos documents PDF, une lecture de [Pagedjs](https://www.pagedjs.org) est nécessaire.
+
+La lecture de la documentation [asciidoctor.js](https://asciidoctor-docs.netlify.app/asciidoctor.js/) est recommandée.
+
+En fonction de vos besoins, ajoutez les commandes nécessaires dans la partie `scripts` du fichier `package.json`.
+
 ## Contribuer
 
 Toute personne souhaitant participer au projet, pour l'améliorer ou proposer des évolutions est bienvenue.

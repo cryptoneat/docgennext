@@ -26,7 +26,6 @@ readFile(packageJsonFile, { encoding: 'utf8' }, (error, data) => {
 
   const packageJson = JSON.parse(data)
 
-  // TODO : Il faudra récupérer le port dans le fichier package.json pour le serveur local.
   const options = {
     standalone: true,
     doctype: 'article',
@@ -38,7 +37,6 @@ readFile(packageJsonFile, { encoding: 'utf8' }, (error, data) => {
       lang: packageJson.config.attributes.lang,
       encoding: packageJson.config.attributes.encoding,
       doctitle: packageJson.config.attributes.doctitle,
-      subtitle: packageJson.config.attributes.subtitle,
       description: packageJson.description,
       author: packageJson.config.attributes.author,
       authors: packageJson.config.attributes.authors,
