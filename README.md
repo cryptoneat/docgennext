@@ -186,6 +186,32 @@ La lecture de la documentation [asciidoctor.js](https://asciidoctor-docs.netlify
 
 En fonction de vos besoins, ajoutez les commandes nécessaires dans la partie `scripts` du fichier `package.json`.
 
+### Docbook
+
+Pour générer un fichier XML, utilisez la commande suivante :
+
+```bash
+npm run docbook
+```
+
+Un fichier `book.xml` sera généré dans le dossier `build`.
+
+### Word
+
+Il est nécessaire d'installer [Pandoc](https://pandoc.org) pour transformer un fichier XML en fichier Word (`.docx`).
+
+Après avoir utilisé la commande précédente, vous pouvez utiliser la commande suivante pour générer un fichier Word :
+
+```bash
+npm run pandoc
+```
+
+Si vous souhaitez générer un fichier XML, suivi du fichier Word, utilisez la commande suivante :
+
+```bash
+npm run word
+```
+
 ## Contribuer
 
 Toute personne souhaitant participer au projet, pour l'améliorer ou proposer des évolutions est bienvenue.

@@ -159,6 +159,9 @@ function building (answers) {
     newPackageJson.scripts.reload = 'reload -b -p $npm_package_config_port -d build'
     newPackageJson.scripts.nodemon = 'nodemon --exec "node index.js" --watch project --ext adoc,md,html,css,ico,png,jpg,gif'
     newPackageJson.scripts.pdf = 'asciidoctor-pdf -T ./project/templates ./main.adoc'
+    newPackageJson.scripts.docbook = 'asciidoctor --require @asciidoctor/docbook-converter --backend docbook project/main.adoc -o build/book.xml'
+    newPackageJson.scripts.pandoc = 'pandoc build/book.xml -f docbook -t docx -s -o build/index.docx'
+    newPackageJson.scripts.word = 'npm run docbook && npm run pandoc'
     newPackageJson.config = {
       port: answers.port,
       creation: new Date(),
@@ -189,6 +192,7 @@ function building (answers) {
 
       const install = spawn(cmd, ['i', '--save',
         '@asciidoctor/core',
+        '@asciidoctor/docbook-converter',
         'asciidoctor',
         'asciidoctor-kroki',
         'asciidoctor-pdf',
