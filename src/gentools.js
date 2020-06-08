@@ -34,7 +34,7 @@ function filterCapitalizeFirst (str) {
   let filter = ''
 
   if (typeof str === 'string' && str !== '') {
-    filter = str.trim()
+    filter = str.trim().toLowerCase()
     filter = filter.charAt(0).toUpperCase() + filter.slice(1)
   }
 
@@ -46,8 +46,8 @@ function filterCapitalizeFirst (str) {
  * @param {string} email
  * @returns {boolean} checked email.
  */
-function filterEmail (email) {
-  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.trim())
+function filterEmail (email = '') {
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)
 }
 
 /**
@@ -62,7 +62,7 @@ function filterName (name) {
     filter = filterRegex(name)
       .substr(0, 214)
       .toLowerCase()
-      .replace(/[?!€£':",+-=]/g, '')
+      .replace(/[?!€£';:",+-=]/g, '')
       // Replace accented characters with their "unaccented" equivalents.
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/ /g, '_')
@@ -87,11 +87,11 @@ function filterPort (port) {
  * @returns {string}
  */
 function filterVersion (version) {
-  let filter = ''
+  let filter = '0.1.0'
 
   if (typeof version === 'string') {
     // Commas and semicolons are replaced by periods.
-    filter = version.trim().replace(/[,]/g, '.')
+    filter = version.trim().replace(/[,;]/g, '.')
 
     // Test of this version (X.XX.XXX-SNAPSHOT, for exemple) or returns by default: 0.1.0
     filter = (filter.match(/^\d+.\d+.\d+-?\w*?$/)) ? filter : '0.1.0'

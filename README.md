@@ -186,7 +186,7 @@ La lecture de la documentation [asciidoctor.js](https://asciidoctor-docs.netlify
 
 En fonction de vos besoins, ajoutez les commandes nécessaires dans la partie `scripts` du fichier `package.json`.
 
-### Docbook
+### Docbook
 
 Pour générer un fichier XML, utilisez la commande suivante :
 
