@@ -1,11 +1,11 @@
-function readme(title, description) {
-return `# ${title}
+function readme (title, description) {
+  return `# ${title}
 
 ${description}
 
 ## Compilation de votre documentation
 
-Avec un Terminal, placez-vous dans le projet documentaire et lancez la commande suivante :
+Avec un Terminal, placez-vous dans le projet documentaire et lancez la commande suivante :
 
 \`\`\`bash
 npm run start
@@ -20,6 +20,7 @@ Au moment de la création de votre projet, un dossier \`build/\` est créé à 
 Si vous modifiez régulièrement les sous-dossier de \`project/\`, pensez de temps en temps à supprimer le dossier \`build/\` pour faire le ménage.
 
 ## Génération PDF
-`}
+`
+}
 
-module.exports = readme;
+module.exports = readme

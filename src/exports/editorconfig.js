@@ -14,4 +14,4 @@ max_line_length = off
 trim_trailing_whitespace = false
 `
 
-module.exports = editorconfig;
+module.exports = editorconfig

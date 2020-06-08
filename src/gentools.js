@@ -2,8 +2,8 @@
  * Replace the bad caracteres on a string.
  * @param {string} str
  */
-function filterRegex(str) {
-  return str.replace(/[`¤~@#%^&$*()|.<>\/\{\}\[\]\\\/]/g, '').trim();
+function filterRegex (str) {
+  return str.replace(/[`¤~@#%^&$*()|.<>/{}[\]\\/]/g, '').trim()
 }
 
 // ----  EXPORT  ---- //
@@ -14,14 +14,14 @@ function filterRegex(str) {
  * @param {string} str
  * @returns {string}
  */
-function filterCapitalizeAll(str) {
-  let filter = '';
+function filterCapitalizeAll (str) {
+  let filter = ''
 
   if (typeof str === 'string' && str !== '') {
-    filter = str.toLowerCase().replace(/\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1)).trim();
+    filter = str.toLowerCase().replace(/\S*/g, t => t.charAt(0).toUpperCase() + t.slice(1)).trim()
   }
 
-  return filter;
+  return filter
 }
 
 /**
@@ -30,15 +30,15 @@ function filterCapitalizeAll(str) {
  * @param {string} str
  * @returns {string}
  */
-function filterCapitalizeFirst(str) {
-  let filter = '';
+function filterCapitalizeFirst (str) {
+  let filter = ''
 
   if (typeof str === 'string' && str !== '') {
-    filter = str.trim();
-    filter = filter.charAt(0).toUpperCase() + filter.slice(1);
+    filter = str.trim()
+    filter = filter.charAt(0).toUpperCase() + filter.slice(1)
   }
 
-  return filter;
+  return filter
 }
 
 /**
@@ -46,8 +46,8 @@ function filterCapitalizeFirst(str) {
  * @param {string} email
  * @returns {boolean} checked email.
  */
-function filterEmail(email) {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.trim());
+function filterEmail (email) {
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.trim())
 }
 
 /**
@@ -55,20 +55,20 @@ function filterEmail(email) {
  * @param {string} name
  * @returns {string}
  */
-function filterName(name) {
-  let filter = '';
+function filterName (name) {
+  let filter = ''
 
-  if(typeof name === 'string') {
+  if (typeof name === 'string') {
     filter = filterRegex(name)
       .substr(0, 214)
       .toLowerCase()
-      .replace(/[\?!€£';:",\+-=]/g, '')
+      .replace(/[?!€£':",+-=]/g, '')
       // Replace accented characters with their "unaccented" equivalents.
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .replace(/ /g, '_');
+      .replace(/ /g, '_')
   }
 
-  return filter;
+  return filter
 }
 
 /**
@@ -76,9 +76,9 @@ function filterName(name) {
  * @param {number} port should be an available port.
  * @returns {number}
  */
-function filterPort(port) {
-  // Port attendu entre 1000 et 9999, sinon retour par défaut : 6660
-  return (!isNaN(parseInt(port)) && port > 999 && port < 10000) ? port : 6660;
+function filterPort (port) {
+  // Port attendu entre 1000 et 9999, sinon retour par défaut : 6660
+  return (!isNaN(parseInt(port)) && port > 999 && port < 10000) ? port : 6660
 }
 
 /**
@@ -86,18 +86,18 @@ function filterPort(port) {
  * @param {string} version Should be correspond to a version number.
  * @returns {string}
  */
-function filterVersion(version) {
-  let filter = '';
+function filterVersion (version) {
+  let filter = ''
 
-  if(typeof version === 'string') {
+  if (typeof version === 'string') {
     // Commas and semicolons are replaced by periods.
-    filter = version.trim().replace(/[,;]/g, '.');
+    filter = version.trim().replace(/[,]/g, '.')
 
     // Test of this version (X.XX.XXX-SNAPSHOT, for exemple) or returns by default: 0.1.0
-    filter = (filter.match(/^\d+.\d+.\d+-?\w*?$/)) ? filter : '0.1.0';
+    filter = (filter.match(/^\d+.\d+.\d+-?\w*?$/)) ? filter : '0.1.0'
   }
 
-  return filter;
+  return filter
 }
 
 module.exports = {
@@ -107,4 +107,4 @@ module.exports = {
   filterName,
   filterPort,
   filterVersion
-};
+}

@@ -33,6 +33,6 @@ const i18n = {
     finished: 'Ready to be written. Thank you!',
     varfilecomment: 'Add your vars below:'
   }
-};
+}
 
-module.exports = i18n;
+module.exports = i18n

@@ -1,4 +1,4 @@
-!['Logo dGen'](./assets/img/logo-dgen.svg)
+!['Logo dGen'](./assets/img/logo-dgen.png)
 
 # DocGen Next
 
@@ -49,7 +49,6 @@ Voici la liste des identifiants disponibles (liste complète) :
 | :---------------- | :-------------------------------------------- | :------------- | :-----------------------: |
 | `title`           | `--title 'ma documentation'`                  | `string`       | :heavy_check_mark:        |
 | `lang`            | `--lang 1`                                    | `number`       | :heavy_check_mark:        |
-| `subtitle`        | `--subtitle 'Un sous titre pour les PDF.`     | `string`       |                           |
 | `author`          | `--author 'Laurent Dupont'`                   | `string`       | :heavy_check_mark:        |
 | `email`           | `--email laurent.dupont@hotmail.com`          | `string`       |                           |
 | `description`     | `--description 'La description de ma doc.'`   | `string`       | :heavy_check_mark:        |

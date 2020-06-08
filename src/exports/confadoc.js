@@ -28,4 +28,4 @@ endif::[]
 include::./variables.adoc[]
 `
 
-module.exports = confadoc;
+module.exports = confadoc
