@@ -158,7 +158,7 @@ function building (answers) {
     newPackageJson.scripts.concurrently = 'concurrently -n "reload,script" -p "[{name}]" -c "green,blue" "npm run reload" "npm run nodemon"'
     newPackageJson.scripts.reload = 'reload -b -p $npm_package_config_port -d build'
     newPackageJson.scripts.nodemon = 'nodemon --exec "node index.js" --watch project --ext adoc,md,html,css,ico,png,jpg,gif'
-    newPackageJson.scripts.pdf = 'asciidoctor-pdf -T ./project/templates ./main.adoc'
+    newPackageJson.scripts.pdf = `asciidoctor-pdf -T ./project/templates -o ./build/${answers.title.name}.pdf ./project/main.adoc`
     newPackageJson.scripts.docbook = 'asciidoctor --require @asciidoctor/docbook-converter --backend docbook project/main.adoc -o build/book.xml'
     newPackageJson.scripts.pandoc = 'pandoc build/book.xml -f docbook -t docx -s -o build/index.docx'
     newPackageJson.scripts.word = 'npm run docbook && npm run pandoc'

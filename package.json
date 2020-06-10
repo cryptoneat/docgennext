@@ -1,6 +1,6 @@
 {
   "name": "docgennext",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Manage your documentation project with Node and Asciidoctor.js",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,9 @@
   },
   "keywords": [
     "asciidoctor",
-    "node",
-    "documentation"
+    "docgen",
+    "documentation",
+    "node"
   ],
   "author": "Crypto Neat",
   "repository": {
@@ -18,14 +19,11 @@
   },
   "license": "ISC",
   "engines" :{
-    "node" : ">10",
-    "npm": ">6"
+    "node" : ">=10",
+    "npm": ">=6"
   },
   "bin": {
     "docgen": "index.js"
-  },
-  "config": {
-    "global": true
   },
   "dependencies": {
     "chalk": "^4.0.0",

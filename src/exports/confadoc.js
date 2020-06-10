@@ -19,6 +19,8 @@ endif::[]
 :docinfo: shared
 :docinfodir: ./docinfo/
 
+:icons: font
+
 ifeval::["{backend}" == "html5"]
 :highlightjs-theme: github
 :nofooter:

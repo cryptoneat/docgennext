@@ -3,16 +3,16 @@ const expect = require('chai').expect
 const chalk = require('chalk')
 
 /* eslint-disable no-unused-expressions */
-describe('Utilisation de GenTools', () => {
-  describe(`- Utilisation de ${chalk.italic('filterCapitalizeAll')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+describe('Using GenTools', () => {
+  describe(`- Call ${chalk.italic('filterCapitalizeAll')} :`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterCapitalizeAll).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('string')}.`, () => {
+    it(`Return a ${chalk.italic('string')}.`, () => {
       expect(Gentools.filterCapitalizeAll()).to.be.a('string').that.is.empty
       expect(Gentools.filterCapitalizeAll('')).to.be.a('string').that.is.empty
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterCapitalizeAll(1)).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeAll(null)).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeAll(undefined)).to.equal('').that.is.empty
@@ -22,7 +22,7 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterCapitalizeAll([])).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeAll([3, 'test'])).to.equal('').that.is.empty
     })
-    it('Est fonctionnel.', () => {
+    it('It\'s ok.', () => {
       expect(Gentools.filterCapitalizeAll('')).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeAll('lorem ipsum dolor sit amet')).to.equal('Lorem Ipsum Dolor Sit Amet')
       expect(Gentools.filterCapitalizeAll('nom d\'une documentation')).to.equal('Nom D\'une Documentation')
@@ -31,15 +31,15 @@ describe('Utilisation de GenTools', () => {
     })
   })
 
-  describe(`- Utilisation de ${chalk.italic('filterCapitalizeFirst')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+  describe(`- Call ${chalk.italic('filterCapitalizeFirst')} :`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterCapitalizeFirst).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('string')}.`, () => {
+    it(`Return a ${chalk.italic('string')}.`, () => {
       expect(Gentools.filterCapitalizeFirst()).to.be.a('string').that.is.empty
       expect(Gentools.filterCapitalizeFirst('')).to.be.a('string').that.is.empty
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterCapitalizeFirst(1)).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeFirst(null)).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeFirst(undefined)).to.equal('').that.is.empty
@@ -49,7 +49,7 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterCapitalizeFirst([])).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeFirst([3, 'test'])).to.equal('').that.is.empty
     })
-    it('Est fonctionnel.', () => {
+    it('It\'s ok.', () => {
       expect(Gentools.filterCapitalizeFirst('')).to.equal('').that.is.empty
       expect(Gentools.filterCapitalizeFirst('lorem ipsum dolor sit amet')).to.equal('Lorem ipsum dolor sit amet')
       expect(Gentools.filterCapitalizeFirst('nom d\'une documentation')).to.equal('Nom d\'une documentation')
@@ -59,14 +59,14 @@ describe('Utilisation de GenTools', () => {
   })
 
   describe(`- Vérification du mail avec ${chalk.italic('filterEmail')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterEmail).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('boolean')}.`, () => {
+    it(`Return a ${chalk.italic('boolean')}.`, () => {
       expect(Gentools.filterEmail()).to.be.a('boolean')
       expect(Gentools.filterEmail('')).to.be.a('boolean')
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterEmail(1)).to.equal(false)
       expect(Gentools.filterEmail(null)).to.equal(false)
       expect(Gentools.filterEmail(undefined)).to.equal(false)
@@ -76,28 +76,28 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterEmail([])).to.equal(false)
       expect(Gentools.filterEmail([3, 'test'])).to.equal(false)
     })
-    it('N\'est pas un mail.', () => {
+    it('Not an email.', () => {
       expect(Gentools.filterEmail('john doe')).to.equal(false)
       expect(Gentools.filterEmail('john.doemail.fr')).to.equal(false)
       expect(Gentools.filterEmail('john.döe@mail.fr')).to.equal(false)
       expect(Gentools.filterEmail('john.doe@mail')).to.equal(false)
     })
-    it('Est un mail.', () => {
+    it('It\'s an email.', () => {
       expect(Gentools.filterEmail('john.doe@mail.fr')).to.equal(true)
       expect(Gentools.filterEmail('John.Doe@mail.fr')).to.equal(true)
       expect(Gentools.filterEmail('John22@mail.fr')).to.equal(true)
     })
   })
 
-  describe(`- Vérification du nom ${chalk.bold('npm')} avec ${chalk.italic('filterName')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+  describe(`- Check the field ${chalk.bold('npm')} with ${chalk.italic('filterName')} :`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterName).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('string')}.`, () => {
+    it(`Return a ${chalk.italic('string')}.`, () => {
       expect(Gentools.filterName()).to.be.a('string').that.is.empty
       expect(Gentools.filterName('')).to.be.a('string').that.is.empty
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterName(1)).to.be.a('string').that.is.empty
       expect(Gentools.filterName(null)).to.be.a('string').that.is.empty
       expect(Gentools.filterName(undefined)).to.be.a('string').that.is.empty
@@ -107,24 +107,24 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterName([])).to.be.a('string').that.is.empty
       expect(Gentools.filterName([3, 'test'])).to.be.a('string').that.is.empty
     })
-    it('Est fonctionnel.', () => {
+    it('It\'s ok.', () => {
       expect(Gentools.filterName('paquet npm')).to.equal('paquet_npm')
       expect(Gentools.filterName(' ÉmilE d\'ÜvalEt   ')).to.equal('emile_duvalet')
     })
   })
 
-  describe(`- Vérification du port avec ${chalk.italic('filterPort')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+  describe(`- Check the field ${chalk.bold('port')} with ${chalk.italic('filterPort')} :`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterPort).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('number')}.`, () => {
+    it(`Return a ${chalk.italic('number')}.`, () => {
       expect(Gentools.filterPort()).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort('')).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort(999)).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort(1000)).to.be.a('number').that.equal(1000)
       expect(Gentools.filterPort(10000)).to.be.a('number').that.equal(6660)
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterPort(1)).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort(null)).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort(undefined)).to.be.a('number').that.equal(6660)
@@ -134,7 +134,7 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterPort([])).to.be.a('number').that.equal(6660)
       expect(Gentools.filterPort([3, 'test'])).to.be.a('number').that.equal(6660)
     })
-    it('Est fonctionnel.', () => {
+    it('It\'s ok.', () => {
       expect(Gentools.filterPort(0)).to.equal(6660)
       expect(Gentools.filterPort(1)).to.equal(6660)
       expect(Gentools.filterPort(999)).to.equal(6660)
@@ -145,15 +145,15 @@ describe('Utilisation de GenTools', () => {
     })
   })
 
-  describe(`- Vérification de la version avec ${chalk.italic('filterVersion')} :`, () => {
-    it(`Est une ${chalk.italic('fonction')}.`, () => {
+  describe(`- Check the field ${chalk.bold('version')} with ${chalk.italic('filterVersion')} :`, () => {
+    it(`It's a ${chalk.italic('fonction')}.`, () => {
       expect(Gentools.filterVersion).to.be.a('function')
     })
-    it(`Renvoi un type ${chalk.italic('string')}.`, () => {
+    it(`Return a ${chalk.italic('string')}.`, () => {
       expect(Gentools.filterVersion()).to.be.a('string').that.equal('0.1.0')
       expect(Gentools.filterVersion('')).to.be.a('string').that.equal('0.1.0')
     })
-    it('Passe les cas à la marge.', () => {
+    it('Works for edge case.', () => {
       expect(Gentools.filterVersion(1)).to.be.a('string').that.equal('0.1.0')
       expect(Gentools.filterVersion(null)).to.be.a('string').that.equal('0.1.0')
       expect(Gentools.filterVersion(undefined)).to.be.a('string').that.equal('0.1.0')
@@ -163,7 +163,7 @@ describe('Utilisation de GenTools', () => {
       expect(Gentools.filterVersion([])).to.be.a('string').that.equal('0.1.0')
       expect(Gentools.filterVersion([3, 'test'])).to.be.a('string').that.equal('0.1.0')
     })
-    it('Est fonctionnel.', () => {
+    it('It\'s ok.', () => {
       expect(Gentools.filterVersion('0.1.0')).to.equal('0.1.0')
       expect(Gentools.filterVersion('  0,1,45   ')).to.equal('0.1.45')
       expect(Gentools.filterVersion(' 2;14;0  ')).to.equal('2.14.0')

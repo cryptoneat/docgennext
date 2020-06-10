@@ -180,11 +180,17 @@ Toute modification ou fichier copié dans le dossier `project` génère une reco
 
 ### PDF
 
+Pour générer le fichier PDF, entrez la commande suivante dans un Terminal :
+
+```bash
+npm run pdf
+```
+
 Si vous souhaitez modifier la mise en page de vos documents PDF, une lecture de [Pagedjs](https://www.pagedjs.org) est nécessaire.
 
 La lecture de la documentation [asciidoctor.js](https://asciidoctor-docs.netlify.app/asciidoctor.js/) est recommandée.
 
-En fonction de vos besoins, ajoutez les commandes nécessaires dans la partie `scripts` du fichier `package.json`.
+En fonction de vos besoins, modifiez ou ajoutez dans la partie `scripts` du fichier `package.json` de nouvelles commandes.
 
 ### Docbook
 
