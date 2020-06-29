@@ -103,7 +103,7 @@ Le serveur [Kroki](https://kroki.io) permet de générer tout un ensemble de dia
 
 Une fois répondu aux questions, vous allez avoir l'organisation suivante :
 
-Concentrez votre attention sur le dossier `project/`. Il est proposé de créer un ensemble de sous-dossiers, chacun représentant une section de votre documentation. Dans chacun de ces dossiers vous y placerez les paragraphes constituant chacune des parties. Le fichier `main.adoc` doit intégrer uniquement les *imports* des fichiers de votre documentation.
+Concentrez votre attention sur le dossier `project/`. Il est proposé de créer un ensemble de sous-dossiers, chacun représentant une section de votre documentation. Dans chacun de ces dossiers vous y placerez les paragraphes constituant chacune des parties. Le fichier `main.adoc` doit intégrer uniquement les *imports* des fichiers de votre documentation.
 
 ### Structure des fichiers
 
@@ -121,7 +121,7 @@ Le projet se décompose ainsi :
 
 Vous pouvez facilement ajouter des fichiers, sans modification de la configuration :
 
-- `project/docinfo/` : pour les fichiers `docinfo.html` et `docinfo-footer.html`.
+- `project/docinfo/` : pour les fichiers `docinfo.html` et `docinfo-footer.html`.
 - `project/icons/` : emplacement de vos icones.
 - `project/images/` : pour toutes vos images *raw* (png, jpg, gif).
 - `project/styles/` : mettez ici tous vos fichiers CSS.
@@ -140,9 +140,9 @@ Concernant le PDF, les Font Awesome 5 sont déjà présentes.
 
 ### Styles
 
-Afin de personnaliser vos documents, il est nécessaire de créer un ou plusieurs fichiers dans le dossier `styles`.
+Afin de personnaliser vos documents, il est nécessaire de créer un ou plusieurs fichiers dans le dossier `styles`.
 
-Dans le fichier `project/confadoc.adoc`, ajoutez la ligne suivante : `:stylesheet: ./styles/styles.css`.
+Dans le fichier `project/confadoc.adoc`, ajoutez la ligne suivante : `:stylesheet: ./styles/styles.css`.
 
 Lors de l'affichage dans le navigateur web, si vous avez des erreurs concernant le *Cross origin*, désactivez-les.
 

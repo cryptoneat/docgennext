@@ -1,6 +1,6 @@
 {
   "name": "docgennext",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Manage your documentation project with Node and Asciidoctor.js",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "Crypto Neat",
   "repository": {
     "type" : "git",
-    "url" : "https://gitlab.com/CryptoNeat/docgennext"
+    "url" : "https://github.com/cryptoneat/docgennext"
   },
   "license": "ISC",
   "engines" :{
