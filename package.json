@@ -14,31 +14,31 @@
   ],
   "author": "Crypto Neat",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/cryptoneat/docgennext"
+    "type": "git",
+    "url": "https://github.com/cryptoneat/docgennext"
   },
   "license": "ISC",
-  "engines" :{
-    "node" : ">=10",
+  "engines": {
+    "node": ">=10",
     "npm": ">=6"
   },
   "bin": {
     "docgen": "index.js"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "prompts": "^2.3.2",
-    "simple-git": "^2.4.0",
-    "yargs": "^15.3.1"
+    "simple-git": "^2.16.0",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.6.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^7.2.0"
+    "mocha": "^8.1.0"
   }
 }
