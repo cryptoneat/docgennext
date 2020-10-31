@@ -4,7 +4,7 @@
 
 DocGen vous proposes un cadre d'écriture documentaire, tous vos projets seront organisés de la même façon, les outils nécessaires à l'écriture et dessins de diagramme sont installés et configurés. Vous n'avez plus qu'à vous lancer dans l'écriture sans vous souciez du reste.
 
-Cet outil vous permet de créer des documentations au format HTML et PDF, il repose principalement sur [Asciidoctor.js](https://asciidoctor.org/docs/asciidoctor.js/).
+Cet outil vous permet de créer des documentations au format HTML, PDF, docbook et Word, il repose principalement sur [Asciidoctor.js](https://asciidoctor.org/docs/asciidoctor.js/).
 
 ## Pré-requis
 
