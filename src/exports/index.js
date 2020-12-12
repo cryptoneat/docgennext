@@ -13,12 +13,16 @@ const moment = require('moment')
 const asciidoctor = require('asciidoctor')()
 const asciidoctorCore = require('@asciidoctor/core')()
 const kroki = require('asciidoctor-kroki')
+const color = require('asciidoctor-color')
+const emoji = require('asciidoctor-emoji')
 const chalk = require('chalk')
 
 const packageJsonFile = 'package.json'
 
 // Set configuration
 kroki.register(asciidoctorCore.Extensions)
+color.register(asciidoctorCore.Extensions)
+emoji.register(asciidoctorCore.Extensions)
 moment.locale('fr')
 
 readFile(packageJsonFile, { encoding: 'utf8' }, (error, data) => {

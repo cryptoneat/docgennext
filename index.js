@@ -194,6 +194,8 @@ function building (answers) {
         '@asciidoctor/core',
         '@asciidoctor/docbook-converter',
         'asciidoctor',
+        'asciidoctor-color',
+        'asciidoctor-emoji',
         'asciidoctor-kroki',
         'asciidoctor-pdf',
         'chalk',

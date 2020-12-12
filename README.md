@@ -45,7 +45,7 @@ docgen --author 'Laurent Dupont' --email laurent.dupont@hotmail.com
 
 Voici la liste des identifiants disponibles (liste complète) :
 
-| Identifiant       | Exemple                                       | Type           | Requis lors des questions |
+| Identifiant       | Exemple                                       | Type           | Requis                    |
 | :---------------- | :-------------------------------------------- | :------------- | :-----------------------: |
 | `title`           | `--title 'ma documentation'`                  | `string`       | :heavy_check_mark:        |
 | `lang`            | `--lang 1`                                    | `number`       | :heavy_check_mark:        |
@@ -153,6 +153,32 @@ N'importe quel éditeur de texte fera l'affaire, les deux éditeurs les plus ada
 - [Sublime Text](http://www.sublimetext.com)
 - [Visual Studio Code](https://code.visualstudio.com)
 - Ou son *fork* qui ne récupère pas les données statistiques [VSCodium](https://github.com/VSCodium/vscodium#install-with-brew)
+
+## Extensions
+
+Un certains nombres d'extensions sont disponibles pour vous donner plus de contrôle lors de l'écriture de vos documents.
+
+### Couleurs
+
+Vous pouvez indiquer un nom d'une [couleur du web](https://en.wikipedia.org/wiki/Web_colors), du RGB, RGBA, HSL, HSLA ou HEX, par exemple :
+
+```javascript
+color:#FF5733[]
+```
+
+Plus d'informations : https://github.com/Mogztter/asciidoctor-color
+
+### Emoji
+
+Pour intégrer des émoticons dans vos documents :
+
+```ASN.1
+emoji:wink[]
+```
+
+Il est possible d'indiquer une taille plus grande ou directement en pixel dans les crochets.
+
+Plus d'informations : https://github.com/Mogztter/asciidoctor-emoji
 
 ## Livrables
 
