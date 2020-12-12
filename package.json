@@ -1,6 +1,6 @@
 {
   "name": "docgennext",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Manage your documentation project with Node and Asciidoctor.js",
   "main": "index.js",
   "scripts": {

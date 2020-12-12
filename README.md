@@ -158,7 +158,7 @@ N'importe quel éditeur de texte fera l'affaire, les deux éditeurs les plus ada
 
 Un certains nombres d'extensions sont disponibles pour vous donner plus de contrôle lors de l'écriture de vos documents.
 
-### Couleurs
+### Couleurs
 
 Vous pouvez indiquer un nom d'une [couleur du web](https://en.wikipedia.org/wiki/Web_colors), du RGB, RGBA, HSL, HSLA ou HEX, par exemple :
 
@@ -168,7 +168,7 @@ color:#FF5733[]
 
 Plus d'informations : https://github.com/Mogztter/asciidoctor-color
 
-### Emoji
+### Emoji
 
 Pour intégrer des émoticons dans vos documents :
 
