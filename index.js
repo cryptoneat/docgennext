@@ -158,7 +158,8 @@ function building (answers) {
     newPackageJson.scripts.concurrently = 'concurrently -n "reload,script" -p "[{name}]" -c "green,blue" "npm run reload" "npm run nodemon"'
     newPackageJson.scripts.reload = 'reload -b -p $npm_package_config_port -d build'
     newPackageJson.scripts.nodemon = 'nodemon --exec "node index.js" --watch project --ext adoc,md,html,css,ico,png,jpg,gif'
-    newPackageJson.scripts.pdf = `asciidoctor-pdf -T ./project/templates -o ./build/${answers.title.name}.pdf ./project/main.adoc`
+    newPackageJson.scripts.pdf = `asciidoctor-web-pdf -T ./project/templates -o ./build/${answers.title.name}.pdf ./project/main.adoc`
+    newPackageJson.scripts['pdf-preview'] = 'asciidoctor-web-pdf --preview --watch -T ./project/templates ./project/main.adoc'
     newPackageJson.scripts.docbook = 'asciidoctor --require @asciidoctor/docbook-converter --backend docbook project/main.adoc -o build/book.xml'
     newPackageJson.scripts.pandoc = 'pandoc build/book.xml -f docbook -t docx -s -o build/index.docx'
     newPackageJson.scripts.word = 'npm run docbook && npm run pandoc'
@@ -222,7 +223,7 @@ function building (answers) {
                   appendFile('.gitignore', '\n# Doc project\nbuild/\nproject/*.pdf\nproject/*.html\n').then(() => {
                     simpleGit.init().then(() => {
                       simpleGit.add('.').then(() => {
-                        simpleGit.commit('Initial commit.').then(() => {
+                        simpleGit.commit('Initial commit').then(() => {
                           // Ending announcement
                           console.log(chalk.green('\n' + i18n[processEnvLang].finished + '\n'))
 
@@ -246,7 +247,8 @@ function building (answers) {
       writeFile(path.resolve('./project' + '/chapters' + '/.gitkeep'), '')
       writeFile(path.resolve('./project' + '/' + 'variables.adoc'), `// ${i18n[processEnvLang].varfilecomment}\n`)
       writeFile(path.resolve('./project' + '/' + 'confadoc.adoc'), confadoc)
-      writeFile(path.resolve('./project' + '/' + 'main.adoc'), 'include::./confadoc.adoc[]\n')
+      writeFile(path.resolve('./project' + '/' + 'main.adoc'),
+        `include::./confadoc.adoc[]\n\n= ${answers.title.title}\n`)
     }).catch(e => { throw e })
 
     mkdir(path.resolve('./project' + '/docinfo'), { recursive: true }, () => {

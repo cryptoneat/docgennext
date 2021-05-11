@@ -206,6 +206,14 @@ Toute modification ou fichier copié dans le dossier `project` génère une reco
 
 ### PDF
 
+Afin de réaliser la mise en page du PDF et avoir un apperçu des manipulations en cours, vous avez la commande ci-dessous qui ouvrira Chromium et affichera le texte :
+
+```bash
+npm run pdf-preview
+```
+
+Toute modification entrainera un rafraichissement de la page automatique.
+
 Pour générer le fichier PDF, entrez la commande suivante dans un Terminal :
 
 ```bash
